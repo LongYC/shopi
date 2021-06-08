@@ -3,5 +3,7 @@
     "declaration": true,
     "moduleResolution": "node",
 		"outDir": "dist"
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude" : ["**/*.spec.ts"]
 }

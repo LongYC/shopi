@@ -1,6 +1,6 @@
 {
   "name": "shopi",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "license": "MIT",
   "repository": "LongYC/shopi",
   "exports": "./dist/index.js",
@@ -9,16 +9,17 @@
     "dist"
   ],
   "engines": {
-    "node": ">=14"
+    "node": ">=12"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "del-cli dist && tsc",
     "prepare": "npm run build",
     "test": "jest"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/node": "^15.12.2",
+    "del-cli": "^3.0.1",
     "jest": "^27.0.4",
     "ts-jest": "^27.0.3",
     "typescript": "^4.3.2"
