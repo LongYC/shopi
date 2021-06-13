@@ -11,9 +11,13 @@ const generateShopAuthUrl = (partnerId: string, partnerKey: string, redirectUrl 
   const authApiPath = '/api/v2/shop/auth_partner';
   const epochOfNowInSeconds = Math.floor(Date.now() / 1000);
   const signatureBaseString = `${partnerId}${authApiPath}${epochOfNowInSeconds}`;
-  const signature = generateSignature(partnerKey, signatureBaseString);
   const apiHost = `https://partner${isTest ? '.test-stable' : ''}.shopeemobile.com`;
-  return `${apiHost}${authApiPath}?partner_id=${partnerId}&timestamp=${epochOfNowInSeconds}&sign=${signature}&redirect=${redirectUrl}`;
+  return `${apiHost}${authApiPath}?${new URLSearchParams({
+    'partner_id': partnerId,
+    'timestamp': String(epochOfNowInSeconds),
+    'sign': generateSignature(partnerKey, signatureBaseString),
+    'redirect': redirectUrl
+  }).toString()}`;
 };
 
 export {generateShopAuthUrl, generateSignature};
