@@ -33,4 +33,4 @@ const signature = generateSignature(partnerKey, signatureBaseString);
 
 To build: `$ npm run build`
 
-To publish: `$ npm publish`
+To publish: `$ npm version && npm publish`
